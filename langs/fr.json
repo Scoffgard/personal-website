@@ -1,0 +1,43 @@
+{
+    "asciiName": "$39494a&nbsp;_____          __  __ ___ ___ _    _    ___ _   _ ___    _ _____\n|_   _|__ ___  |  \\/  | __|_ _| |  | |  | __| | | | _ \\  /_\\_   _|\n&nbsp;&nbsp;| |/ -_) _ \\ | |\\/| | _| | || |__| |__| _|| |_| |   / / _ \\| |\n&nbsp;&nbsp;|_|\\___\\___/ |_|  |_|___|___|____|____|___|\\___/|_|_\\/_/ \\_\\_|\n\n",
+    "welcomingText": "$39494a&nbsp;Développeur Back avec quelques connaissances en Front.\n\n\n&nbsp;Ce site est sous forme d'invite de commande.\n\n&nbsp;Pour naviguer vous allez devoir éxécuter des commandes à travers le champ de saisie\n&nbsp;en bas de votre écran.\n\n&nbsp;Pour savoir quelles commandes vous pouvez éxécuter, éxécutez la commande 'aide'.\n\n",
+    "promptName": "siteweb@teomeilleurat:~$ ",
+    "unknownCmd": "Commande inconnue !\n",
+    "inputFieldPlaceholder": "Tapez votre commmande içi",
+    "commands": {
+        "aide": {
+            "executable": false,
+            "content": "Voici la liste des commandes disponibles :\n&nbsp;<b>quisuisje</b> : Cette commande vous permet d'en apprendre plus sur moi.\n&nbsp;<b>langue < code de la langue ></b> : Permet de changer la langue du site.\n&nbsp;&nbsp;Exemple pour mettre le site en anglais : <em>langue en</em>\n&nbsp;<b>vider</b> : Vide le terminal.\n"
+        },
+        "quisuisje": {
+            "executable": false,
+            "content": "Je suis Téo MEILLEURAT\n"
+        },
+        "langue": {
+            "executable": true,
+            "execCode": "lang",
+            "success": "La langue à été changée avec succès !\nPour obtenir la nouvelle liste des commandes, éxécutez la commmande 'aide'\n",
+            "fail": "Le code de la langue est invalide\n"
+        },
+        "vider": {
+            "executable": true,
+            "execCode": "clear"
+        },
+        "portfolio": {
+            "executable": true,
+            "execCode": "portfolio",
+            "success": "Fenêtre du portfolio lancée\n",
+            "windowInfos": {
+                "name": "Portfolio - Téo MEILLEURAT",
+                "content": [
+                    {
+                        "name": "Mon premier site",
+                        "imageUrl": "./assets/pp.png", 
+                        "description": "Le premier site que j'avais fait, il est maintenant remplacé par celui-là.",
+                        "redirectLink": "https://scoffgard.ga"  
+                    }
+                ]
+            } 
+        }
+    }
+}

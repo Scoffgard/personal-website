@@ -1,0 +1,148 @@
+@font-face {
+    font-family: 'spleen';
+    src: url('./fonts/spleen-16x32-webfont.woff2') format('woff2'),
+         url('./fonts/spleen-16x32-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'spleen', Arial, sans-serif;
+}
+
+body {
+    --main-color: #eb7c69;
+    --main-color-darker: #cb4c37;
+    font-size: 16px;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(150deg, rgba(9,107,114,1) 15%, rgba(135,187,162,1) 75%);
+}
+
+div.input {
+    background-color: var(--main-color-darker);
+    width: calc(100% - 10px);
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: row;
+    font-size: 24px;
+}
+
+div.input input {
+    font-size: 1.5rem;
+    background-color: #00000000;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding: 0 5px 0 5px;
+}
+
+pre.content {
+    background-color: var(--main-color);
+    width: calc(100% - 30px);
+    height: 100%;
+    padding: 0 15px;
+    margin: 15px 0;
+    overflow-y: scroll;
+    font-size: 1.4rem;
+    scrollbar-color: var(--main-color-darker) var(--main-color);
+}
+
+div.window-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-color);
+}
+
+div.window-container {
+    width: var(--width);
+    height: var(--height);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -55%);
+    box-shadow: 0 30px 60px #000;
+    border-radius: 15px 15px 0 0;
+}
+
+div.window-header {
+    font-size: 1.7rem;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    user-select: none;
+    border-radius: 15px 15px 0 0;
+    background-color: #eee;
+}
+
+div.window-header * {
+    padding: 0 5px;
+}
+
+
+div.custom-window-wrapper {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .7);
+    transition: opacity .5s ease;
+    opacity: 1;
+}
+
+div.custom-window-wrapper.hide {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .5s ease;
+}
+
+article.window-content {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background-color: #aaa;
+    overflow-y: scroll;
+}
+
+div.card {
+    width: 30%;
+    margin: 1.5%;
+    background-color: #eee;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #555;
+    transition: box-shadow 1s ease;
+} 
+
+div.card:hover {
+    box-shadow: 0 0 20px #111;
+    transition: box-shadow 1s ease;
+}
+
+div.card div.card-image-wrapper {
+    width: 100%;
+    height: 25vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-radius: 20px 20px 0 0;
+}
+
+div.card img {
+    width: 100%;
+}
+
+div.card h3 {
+    font-size: 1.5rem;
+    padding: 10px;
+}
+
+div.card p {
+    padding: 0 10px 5px 10px;
+    max-height: 2rem;
+    overflow: hidden;
+}
