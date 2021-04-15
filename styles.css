@@ -51,6 +51,11 @@ pre.content {
     scrollbar-color: var(--main-color-darker) var(--main-color);
 }
 
+pre.content a {
+    text-decoration: underline;
+    color: #eee;
+}
+
 div.window-content {
     width: 100%;
     height: 100%;

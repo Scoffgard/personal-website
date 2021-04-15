@@ -6,25 +6,43 @@
     "inputFieldPlaceholder": "Tapez votre commmande içi",
     "commands": {
         "aide": {
-            "executable": false,
-            "content": "Voici la liste des commandes disponibles :\n&nbsp;<b>quisuisje</b> : Cette commande vous permet d'en apprendre plus sur moi.\n&nbsp;<b>langue < code de la langue ></b> : Permet de changer la langue du site.\n&nbsp;&nbsp;Exemple pour mettre le site en anglais : <em>langue en</em>\n&nbsp;<b>vider</b> : Vide le terminal.\n&nbsp;<b>portfolio</b> : Montre mon portfolio.\n"
+            "executable": true,
+            "displayInHelp": false,
+            "hasArgs": false,
+            "execCode": "help",
+            "firstSentence": "Voici la liste des commandes disponibles :\n"
         },
         "quisuisje": {
             "executable": false,
+            "displayInHelp": true,
+            "hasArgs": false,
+            "description": "Cette commande vous permet d'en apprendre plus sur moi.\n",
             "content": "Je suis Téo MEILLEURAT\n"
         },
         "langue": {
             "executable": true,
+            "displayInHelp": true,
+            "hasArgs": true,
+            "description": "Permet de changer la langue du site.\n&nbsp;&nbsp;Exemple pour mettre le site en anglais : <em>langue en</em>\n",
+            "args": [
+                "code de la langue"
+            ],
             "execCode": "lang",
             "success": "La langue à été changée avec succès !\nPour obtenir la nouvelle liste des commandes, éxécutez la commmande 'aide'\n",
             "fail": "Le code de la langue est invalide\n"
         },
         "vider": {
             "executable": true,
+            "displayInHelp": true,
+            "hasArgs": false,
+            "description": "Vide le terminal.\n",
             "execCode": "clear"
         },
         "portfolio": {
             "executable": true,
+            "displayInHelp": true,
+            "hasArgs": false,
+            "description": "Montre mon portfolio.\n",
             "execCode": "portfolio",
             "success": "Fenêtre du portfolio lancée\n",
             "windowInfos": {
@@ -38,6 +56,13 @@
                     }
                 ]
             } 
+        },
+        "github": {
+            "executable": false,
+            "displayInHelp": true,
+            "hasArgs": false,
+            "description": "Donne le lien de ma page GitHub.\n",
+            "content": "<a href=\"https://github.com/scoffgard\" target=\"_blank\">https://github.com/scoffgard</a>\n"
         }
     }
 }

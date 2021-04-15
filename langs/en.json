@@ -6,25 +6,43 @@
     "inputFieldPlaceholder": "Type your command here",
     "commands": {
         "help": {
-            "executable": false,
-            "content": "Here is the list of the availables commands :\n&nbsp;<b>whoami</b> : This command allow you to learn more about me.\n&nbsp;<b>lang < language code ></b> : Allow you to change the website's language.\n&nbsp;&nbsp;Example to make the website french : <em>lang fr</em>\n&nbsp;<b>clear</b> : Clear the terminal.\n&nbsp;<b>portfolio</b> : Show my portfolio.\n"
+            "executable": true,
+            "displayInHelp": false,
+            "hasArgs": false,
+            "execCode": "help",
+            "firstSentence": "Here is the list of the availables commands :\n"
         },
         "whoami": {
             "executable": false,
+            "displayInHelp": true,
+            "hasArgs": false,
+            "description": "This command allow you to learn more about me.\n",
             "content": "I am Téo MEILLEURAT\n"
         },
         "lang": {
             "executable": true,
+            "displayInHelp": true,
+            "hasArgs": true,
+            "description": "Allow you to change the website's language.\n&nbsp;&nbsp;Example to make the website french : <em>lang fr</em>\n",
+            "args": [
+                "language code"
+            ],
             "execCode": "lang",
             "success": "The lang is succesfuly changed !\nTo obtain the new command list, execute the 'help' command.\n",
             "fail": "The language code is invalid\n"
         },
         "clear": {
             "executable": true,
+            "displayInHelp": true,
+            "hasArgs": false,
+            "description": "Clear the terminal.\n",
             "execCode": "clear"
         },
         "portfolio": {
             "executable": true,
+            "displayInHelp": true,
+            "hasArgs": false,
+            "description": "Show my portfolio.\n",
             "execCode": "portfolio",
             "success": "Portfolio window lanched\n",
             "windowInfos": {
@@ -38,6 +56,13 @@
                     }
                 ]
             } 
+        },
+        "github": {
+            "executable": false,
+            "displayInHelp": true,
+            "hasArgs": false,
+            "description": "Give the link to my GitHub page.\n",
+            "content": "<a href=\"https://github.com/scoffgard\" target=\"_blank\">https://github.com/scoffgard</a>\n"
         }
     }
 }

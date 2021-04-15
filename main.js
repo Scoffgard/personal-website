@@ -18,7 +18,8 @@ let writingInProgress = false;
 const execCodeTable = {
     "lang": async newLang => await changeLanguage(newLang),
     "clear": () => consoleBox.innerHTML = "",
-    "portfolio": () => spawnCustomWindow('portfolio', generatePortfolioContent())
+    "portfolio": () => spawnCustomWindow('portfolio', generatePortfolioContent()),
+    "help": () => generateHelpMessage()
 }
 
 inputField.addEventListener('keyup', async function onEvent(e) {
@@ -158,6 +159,26 @@ function generatePortfolioContent() {
     }
 
     return result;
+}
+
+function generateHelpMessage() {
+    let helpMessage = langData.commands[getCommandDisplayName('help')].firstSentence;
+
+    for(let command in langData.commands) {
+        if (langData.commands[command].displayInHelp === false) continue;
+
+        helpMessage += `&nbsp;<b>${command}</b> `;
+
+        if (langData.commands[command].hasArgs === true) {
+            for(let arg of langData.commands[command].args) {
+                helpMessage += `\< ${arg} \> `;
+            }
+        }
+
+        helpMessage += `: ${langData.commands[command].description}`;
+    }
+
+    return helpMessage;
 }
 
 (async () => {
