@@ -7,7 +7,7 @@
     "commands": {
         "help": {
             "executable": false,
-            "content": "Here is the list of the availables commands :\n&nbsp;<b>whoami</b> : This command allow you to learn more about me.\n&nbsp;<b>lang < language code ></b> : Allow you to change the website's language.\n&nbsp;&nbsp;Example to make the website french : <em>lang fr</em>\n&nbsp;<b>clear<b/> : Clear the terminal.\n"
+            "content": "Here is the list of the availables commands :\n&nbsp;<b>whoami</b> : This command allow you to learn more about me.\n&nbsp;<b>lang < language code ></b> : Allow you to change the website's language.\n&nbsp;&nbsp;Example to make the website french : <em>lang fr</em>\n&nbsp;<b>clear</b> : Clear the terminal.\n&nbsp;<b>portfolio</b> : Show my portfolio.\n"
         },
         "whoami": {
             "executable": false,

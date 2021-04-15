@@ -7,7 +7,7 @@
     "commands": {
         "aide": {
             "executable": false,
-            "content": "Voici la liste des commandes disponibles :\n&nbsp;<b>quisuisje</b> : Cette commande vous permet d'en apprendre plus sur moi.\n&nbsp;<b>langue < code de la langue ></b> : Permet de changer la langue du site.\n&nbsp;&nbsp;Exemple pour mettre le site en anglais : <em>langue en</em>\n&nbsp;<b>vider</b> : Vide le terminal.\n"
+            "content": "Voici la liste des commandes disponibles :\n&nbsp;<b>quisuisje</b> : Cette commande vous permet d'en apprendre plus sur moi.\n&nbsp;<b>langue < code de la langue ></b> : Permet de changer la langue du site.\n&nbsp;&nbsp;Exemple pour mettre le site en anglais : <em>langue en</em>\n&nbsp;<b>vider</b> : Vide le terminal.\n&nbsp;<b>portfolio</b> : Montre mon portfolio.\n"
         },
         "quisuisje": {
             "executable": false,
