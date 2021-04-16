@@ -171,7 +171,7 @@ function generateHelpMessage() {
 
         if (langData.commands[command].hasArgs === true) {
             for(let arg of langData.commands[command].args) {
-                helpMessage += `\< ${arg} \> `;
+                helpMessage += `<⁣⁣&#8291;${arg}⁣⁣&#8291;> `;
             }
         }
 
