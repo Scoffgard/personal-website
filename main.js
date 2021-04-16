@@ -11,7 +11,7 @@ const customWindowContent = document.getElementById('customWindowContent');
 
 const languageList = ['en', 'fr'];
 
-const lineSpawnTime = 10;
+const lineSpawnTime = 200;
 
 let langData = {};
 
