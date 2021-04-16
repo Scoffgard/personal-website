@@ -174,10 +174,10 @@ div.mobile-input-option {
     user-select: none;
     padding: 10px;
     border: 3px solid #eee;
-    border-radius: 25px;
+    border-radius: 40px;
     background-color: var(--main-color);
     margin-right: 5px;
-    font-size: 2rem;
+    font-size: 2.3rem;
 }
 
 @media screen and (orientation: portrait) {
@@ -190,10 +190,18 @@ div.mobile-input-option {
     }
 
     pre.content {
-        font-size: 1.7rem;
+        font-size: 2.3rem;
     }
 
     div.card div.card-image-wrapper {
         height: 8vh;
+    }
+
+    div.card h3 {
+        font-size: 2.3rem;
+    }
+    div.card p {
+        font-size: 1.9rem;
+        max-height: 8rem;
     }
 }
