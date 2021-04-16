@@ -42,13 +42,22 @@ div.input input {
 
 pre.content {
     background-color: var(--main-color);
-    width: calc(100% - 30px);
+    width: calc(var(--width) - 30px);
     height: 100%;
     padding: 0 15px;
     margin: 15px 0;
     overflow-y: scroll;
+    overflow-x: hidden;
     font-size: 1.4rem;
     scrollbar-color: var(--main-color-darker) var(--main-color);
+}
+
+pre.content span {
+    white-space: pre-wrap;
+}
+
+pre.content span.ascii-name {
+    white-space: inherit;
 }
 
 pre.content a {
@@ -150,4 +159,41 @@ div.card p {
     padding: 0 10px 5px 10px;
     max-height: 2rem;
     overflow: hidden;
+}
+
+div.mobile-input {
+    background-color: var(--main-color-darker);
+    display: none;
+    width: calc(100% - 10px);
+    padding: 10px 5px;
+    overflow-x: scroll;
+    scrollbar-color: var(--main-color) var(--main-color-darker);
+}
+
+div.mobile-input-option {
+    user-select: none;
+    padding: 10px;
+    border: 3px solid #eee;
+    border-radius: 25px;
+    background-color: var(--main-color);
+    margin-right: 5px;
+    font-size: 2rem;
+}
+
+@media screen and (orientation: portrait) {
+    div.mobile-input {
+        display: inherit;
+    }
+
+    div.input {
+        display: none;
+    }
+
+    pre.content {
+        font-size: 1.7rem;
+    }
+
+    div.card div.card-image-wrapper {
+        height: 8vh;
+    }
 }

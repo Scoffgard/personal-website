@@ -1,6 +1,6 @@
 {
     "asciiName": "$39494a&nbsp;_____          __  __ ___ ___ _    _    ___ _   _ ___    _ _____\n|_   _|__ ___  |  \\/  | __|_ _| |  | |  | __| | | | _ \\  /_\\_   _|\n&nbsp;&nbsp;| |/ -_) _ \\ | |\\/| | _| | || |__| |__| _|| |_| |   / / _ \\| |\n&nbsp;&nbsp;|_|\\___\\___/ |_|  |_|___|___|____|____|___|\\___/|_|_\\/_/ \\_\\_|\n\n",
-    "welcomingText": "$39494a&nbsp;Back Developer with some front-end knowledges\n\n\n&nbsp;This website is command prompt based.\n\n&nbsp;To navigate you will need to execute commands through the input field\n&nbsp;in the bottom of your screen.\n\n&nbsp;To know what commands you can execute, execute the 'help' command.\n\n",
+    "welcomingText": "$39494aBack Developer with some front-end knowledges\n\n\nThis website is command prompt based.\n\nTo navigate you will need to execute commands through the input field in the bottom of your screen.\n\nTo know what commands you can execute, execute the 'help' command.\n\n",
     "promptName": "website@teomeilleurat:~$ ",
     "unknownCmd": "Unknown command !\n",
     "inputFieldPlaceholder": "Type your command here",
@@ -25,7 +25,7 @@
             "hasArgs": true,
             "description": "Allow you to change the website's language.\n&nbsp;&nbsp;Example to make the website french : <em>lang fr</em>\n",
             "args": [
-                "language code"
+                ["language code", ["fr", "en"]]
             ],
             "execCode": "lang",
             "success": "The lang is succesfuly changed !\nTo obtain the new command list, execute the 'help' command.\n",

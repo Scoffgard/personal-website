@@ -3,13 +3,15 @@ console.log('Script loaded !');
 const consoleBox = document.getElementById('content');
 const inputField = document.getElementById('inputField');
 
+const mobileInputField = document.getElementById('mobileInput');
+
 const customWindowWrapper = document.getElementById('customWindowWrapper');
 const customWindowName = document.getElementById('customWindowName');
 const customWindowContent = document.getElementById('customWindowContent');
 
 const languageList = ['en', 'fr'];
 
-const lineSpawnTime = 200;
+const lineSpawnTime = 10;
 
 let langData = {};
 
@@ -24,29 +26,33 @@ const execCodeTable = {
 
 inputField.addEventListener('keyup', async function onEvent(e) {
     if (e.key === "Enter") {
-        if(writingInProgress === true) return;
-
         const value = inputField.value.split(' ');
-        const command = value.shift();
-        const args = value;
-
-        inputField.value = '';
-
-        await addTextToConsole(`$2e5431${command} ${args}\n`);
-
-        if (langData.commands[command]?.executable == true) {
-            let res = await execCodeTable[langData.commands[command].execCode](...args);
-            await addTextToConsole(res);
-        } else {
-            let content = langData.commands[command] ? langData.commands[command].content : langData.unknownCmd;
-            await addTextToConsole(content);
-        }
-        
-        await addTextToConsole(`\n${langData.promptName}`);
+        executeCommand(value);
     }
 });
 
-async function addTextToConsole(text) {
+async function executeCommand(value) {
+    if(writingInProgress === true) return;
+
+    const command = value.shift();
+    const args = value;
+
+    inputField.value = '';
+
+    await addTextToConsole(`$2e5431${command} ${args.join(" ")}\n`);
+
+    if (langData.commands[command]?.executable == true) {
+        let res = await execCodeTable[langData.commands[command].execCode](...args);
+        await addTextToConsole(res);
+    } else {
+        let content = langData.commands[command] ? langData.commands[command].content : langData.unknownCmd;
+        await addTextToConsole(content);
+    }
+        
+    await addTextToConsole(`\n${langData.promptName}`);
+}
+
+async function addTextToConsole(text, customClass) {
     writingInProgress = true;
     let stringTable = text.split(/(?=\n)/);
     let color = '000';
@@ -56,7 +62,7 @@ async function addTextToConsole(text) {
             color = line.slice(1, 7);
             line = line.substring(7, line.length);
         }
-        consoleBox.innerHTML += `<span style="color: #${color};">${line}</span>`;
+        consoleBox.innerHTML += `<span class="${customClass ? customClass : ''}" style="color: #${color};">${line}</span>`;
         await sleep(lineSpawnTime);
         consoleBox.scrollTop = consoleBox.scrollHeight;
     }
@@ -171,7 +177,7 @@ function generateHelpMessage() {
 
         if (langData.commands[command].hasArgs === true) {
             for(let arg of langData.commands[command].args) {
-                helpMessage += `<⁣⁣&#8291;${arg}⁣⁣&#8291;> `;
+                helpMessage += `<⁣⁣&#8291;${arg[0]}⁣⁣&#8291;> `;
             }
         }
 
@@ -181,12 +187,66 @@ function generateHelpMessage() {
     return helpMessage;
 }
 
+function addCommandsToMobileInputField() {
+    mobileInputField.innerHTML = "";
+
+    for(let command in langData.commands) {
+        let selector = document.createElement('div');
+        selector.classList.add('mobile-input-option');
+        selector.innerHTML = command;
+        if (langData.commands[command].hasArgs === true) {
+            selector.onclick = () => chooseBetweenArgs(command);
+        } else {
+            selector.onclick = () => executeCommand([command]);
+        }
+
+        mobileInputField.appendChild(selector);
+    }
+}
+
+function chooseBetweenArgs(command, argNumber, args) {
+    mobileInputField.innerHTML = "";
+
+    if (langData.commands[command].args.length > 1) {
+        argNumber = argNumber == undefined ? 0 : argNumber;
+        args = args == undefined ? [] : args;
+
+        for(let arg of langData.commands[command].args[argNumber][1]) {
+            let selector = document.createElement('div');
+            selector.classList.add('mobile-input-option');
+            selector.innerHTML = arg;
+
+            if (langData.commands[command].args.length == argNumber+1) {
+                console.log(args);
+                selector.onclick = async () => {args.push(arg); await executeCommand([command, ...args]); addCommandsToMobileInputField()};
+            } else {
+                selector.onclick = () => {args.push(arg); chooseBetweenArgs(command, argNumber+1, args)};
+            }
+    
+            mobileInputField.appendChild(selector);
+        }
+    } else {
+        for(let arg of langData.commands[command].args[0][1]) {
+            let selector = document.createElement('div');
+            selector.classList.add('mobile-input-option');
+            selector.innerHTML = arg;
+            selector.onclick = async () => {await executeCommand([command, arg]); addCommandsToMobileInputField()};
+    
+            mobileInputField.appendChild(selector);
+        }
+    }
+    
+    
+}
+
 (async () => {
     langData = await fetchLangData(checkUserPreferedLanguage());
 
     inputField.placeholder = langData.inputFieldPlaceholder;
 
-    await addTextToConsole(langData.asciiName);
+    addCommandsToMobileInputField()
+
+    await addTextToConsole(langData.asciiName, "ascii-name");
     await addTextToConsole(langData.welcomingText);
     await addTextToConsole(langData.promptName);
 })();
