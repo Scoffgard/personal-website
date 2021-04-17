@@ -2,7 +2,7 @@
     "asciiName": "$39494a&nbsp;_____          __  __ ___ ___ _    _    ___ _   _ ___    _ _____\n|_   _|__ ___  |  \\/  | __|_ _| |  | |  | __| | | | _ \\  /_\\_   _|\n&nbsp;&nbsp;| |/ -_) _ \\ | |\\/| | _| | || |__| |__| _|| |_| |   / / _ \\| |\n&nbsp;&nbsp;|_|\\___\\___/ |_|  |_|___|___|____|____|___|\\___/|_|_\\/_/ \\_\\_|\n\n",
     "welcomingText": "$39494aBack Developer with some front-end knowledges\n\n\nThis website is command prompt based.\n\nTo navigate you will need to execute commands through the input field in the bottom of your screen.\n\nTo know what commands you can execute, execute the 'help' command.\n\n",
     "promptName": "website@teomeilleurat:~$ ",
-    "unknownCmd": "Unknown command !\n",
+    "unknownCmd": "Unknown command ! Execute the 'help' command to obtain help.\n",
     "inputFieldPlaceholder": "Type your command here",
     "commands": {
         "help": {
@@ -17,7 +17,7 @@
             "displayInHelp": true,
             "hasArgs": false,
             "description": "This command allow you to learn more about me.\n",
-            "content": "I am Téo MEILLEURAT\n"
+            "content": "$39494aI am Téo MEILLEURAT, a young 17 years old apprentice developer.\n\nI live in a city near to Toulouse, in the south-west of France.\n\nConcerning the programmation, I’m mostly oriented to web development, thanks to HTML, CSS and JavaScript.\nThe latter is the language I know the most currently, given that I prefer Back-End development than Front-End development.\n\nOverall, I do have knowledges in other languages, such as Java or C# for example.\n\nI do practice IT development since 2016. IT development is for me more than a passtime, this is almost a reason of living.\n"
         },
         "lang": {
             "executable": true,

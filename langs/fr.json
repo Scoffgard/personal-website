@@ -2,7 +2,7 @@
     "asciiName": "$39494a&nbsp;_____          __  __ ___ ___ _    _    ___ _   _ ___    _ _____\n|_   _|__ ___  |  \\/  | __|_ _| |  | |  | __| | | | _ \\  /_\\_   _|\n&nbsp;&nbsp;| |/ -_) _ \\ | |\\/| | _| | || |__| |__| _|| |_| |   / / _ \\| |\n&nbsp;&nbsp;|_|\\___\\___/ |_|  |_|___|___|____|____|___|\\___/|_|_\\/_/ \\_\\_|\n\n",
     "welcomingText": "$39494aDéveloppeur Back avec quelques connaissances en Front.\n\n\nCe site est sous forme d'invite de commande.\n\nPour naviguer vous allez devoir éxécuter des commandes à travers le champ de saisie en bas de votre écran.\n\nPour savoir quelles commandes vous pouvez éxécuter, éxécutez la commande 'aide'.\n\n",
     "promptName": "siteweb@teomeilleurat:~$ ",
-    "unknownCmd": "Commande inconnue !\n",
+    "unknownCmd": "Commande inconnue ! Exécutez la commande 'aide' pour obtenir de l'aide.\n",
     "inputFieldPlaceholder": "Tapez votre commmande içi",
     "commands": {
         "aide": {
@@ -17,7 +17,7 @@
             "displayInHelp": true,
             "hasArgs": false,
             "description": "Cette commande vous permet d'en apprendre plus sur moi.\n",
-            "content": "Je suis Téo MEILLEURAT\n"
+            "content": "$39494aJe suis Téo MEILLEURAT, un jeune apprenti développeur de 17 ans.\n\nJ’habite dans les alentours de Toulouse, dans le Sud-Ouest de la France.\n\nEn ce qui concerne la programmation, je m’oriente majoritairement vers du développement web, grâce au HTML, CSS et au JavaScript.\nCe dernier est le langage que je connais le mieux actuellement, étant donné que je préfère le développement Back-End au développement Front-End.\n\nJ’ai pour autant des connaissances dans certains autres langages, comme le Java et le C# par exemple.\n\nJe pratique la programmation informatique depuis 2016. Le développement informatique est pour moi plus qu’un loisir, c’est une passion, c’est presque une raison de vivre.\n"
         },
         "langue": {
             "executable": true,
