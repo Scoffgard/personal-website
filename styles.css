@@ -16,6 +16,7 @@
 body {
     --main-color: #eb7c69;
     --main-color-darker: #cb4c37;
+    color: #000;
     font-size: 16px;
     height: 100vh;
     width: 100vw;
@@ -40,6 +41,11 @@ div.input input {
     padding: 0 5px 0 5px;
 }
 
+div.input input::placeholder {
+    color: #222;
+    opacity: 0.7;
+}
+
 pre.content {
     background-color: var(--main-color);
     width: calc(var(--width) - 30px);
@@ -50,6 +56,18 @@ pre.content {
     overflow-x: hidden;
     font-size: 1.4rem;
     scrollbar-color: var(--main-color-darker) var(--main-color);
+}
+
+pre.content::-webkit-scrollbar {
+    width: 12px;
+}
+  
+pre.content::-webkit-scrollbar-track {
+    background: var(--main-color);
+}
+  
+pre.content::-webkit-scrollbar-thumb {
+    background-color: var(--main-color-darker);
 }
 
 pre.content span {
