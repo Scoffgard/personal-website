@@ -11,7 +11,7 @@ const customWindowContent = document.getElementById('customWindowContent');
 
 const languageList = ['en', 'fr'];
 
-const lineSpawnTime = 200;
+const lineSpawnTime = 10;
 
 let langData = {};
 
@@ -21,7 +21,8 @@ const execCodeTable = {
     "lang": async newLang => await changeLanguage(newLang),
     "clear": () => consoleBox.innerHTML = "",
     "portfolio": () => spawnCustomWindow('portfolio', generatePortfolioContent()),
-    "help": () => generateHelpMessage()
+    "help": () => generateHelpMessage(),
+    "contact": () => spawnCustomWindow('contact', generateContactFormContent())
 }
 
 inputField.addEventListener('keyup', async function onEvent(e) {
@@ -44,12 +45,12 @@ async function executeCommand(value) {
     if (langData.commands[command]?.executable == true) {
         let res = await execCodeTable[langData.commands[command].execCode](...args);
         await addTextToConsole(res);
+        if (langData.commands[command]?.directEnd == true) await addTextToConsole(`\n${langData.promptName}`);
     } else {
         let content = langData.commands[command] ? langData.commands[command].content : langData.unknownCmd;
         await addTextToConsole(content);
+        await addTextToConsole(`\n${langData.promptName}`);
     }
-        
-    await addTextToConsole(`\n${langData.promptName}`);
 }
 
 async function addTextToConsole(text, customClass) {
@@ -130,8 +131,9 @@ function spawnCustomWindow(execCode, content) {
     return commandInfos.success;
 }
 
-function closeCustomWindow() {
+async function closeCustomWindow() {
     customWindowWrapper.classList.add('hide');
+    await addTextToConsole(`\n${langData.promptName}`);
 }
 
 function generatePortfolioContent() {
@@ -217,7 +219,6 @@ function chooseBetweenArgs(command, argNumber, args) {
             selector.innerHTML = arg;
 
             if (langData.commands[command].args.length == argNumber+1) {
-                console.log(args);
                 selector.onclick = async () => {args.push(arg); await executeCommand([command, ...args]); addCommandsToMobileInputField()};
             } else {
                 selector.onclick = () => {args.push(arg); chooseBetweenArgs(command, argNumber+1, args)};
@@ -237,6 +238,81 @@ function chooseBetweenArgs(command, argNumber, args) {
     }
     
     
+}
+
+
+function generateContactFormContent() {
+    let content = langData.commands[getCommandDisplayName('contact')].windowInfos.content;
+
+    const div = document.createElement('div');
+    div.classList.add('contact-form');
+
+    let html = `
+    <p>${content.name}</p>
+    <input type="text" id="contactname" required/>
+    <br />
+    <p>${content.email}</p>
+    <input type="email" id="contactemail" required/>
+    <br />
+    <p>${content.subject}</p>
+    <input type="text" id="contactsubject" required/>
+    <br />
+    <p>${content.message}</p>
+    <textarea type="text" id="contactmessage" required></textarea>
+    <br />
+    <p id="contactError"></p>
+    <br />
+    `;
+
+    let submitButton = document.createElement('button');
+    submitButton.innerHTML = content.submit;
+    submitButton.onclick = () => {trySumbitContactForm(content)}
+
+    div.innerHTML = html;
+    
+    div.appendChild(submitButton);
+
+    return div;
+}
+
+async function trySumbitContactForm(content) {
+
+    let errorField = document.getElementById('contactError');
+    errorField.innerHTML = "";
+
+    let objToSend = {
+        sender: {}
+    };
+
+    let contentPropertiesBlacklist = ['nonValidContent', 'submit', 'sent'];
+    for(let input in content) {
+        if(contentPropertiesBlacklist.includes(input)) continue;
+
+        let element = document.getElementById(`contact${input}`);
+        if (element.validity.valueMissing == true) return errorField.innerHTML = content.nonValidContent.missing;
+
+        switch(input) {
+            case 'email':
+                if (element.validity.valid == false) return errorField.innerHTML = content.nonValidContent.email;
+            case 'name':
+                objToSend.sender[input] = element.value;
+                break;
+            default:
+                objToSend[input] = element.value;
+                break;
+        }
+    }
+
+    fetch('http://localhost:8080/send', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(objToSend)
+    });
+
+    await addTextToConsole(content.sent)
+    closeCustomWindow();
 }
 
 (async () => {

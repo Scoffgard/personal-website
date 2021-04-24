@@ -7,6 +7,7 @@
     "commands": {
         "aide": {
             "executable": true,
+            "directEnd": true,
             "displayInHelp": false,
             "hasArgs": false,
             "execCode": "help",
@@ -21,6 +22,7 @@
         },
         "langue": {
             "executable": true,
+            "directEnd": true,
             "displayInHelp": true,
             "hasArgs": true,
             "description": "Permet de changer la langue du site.\n&nbsp;&nbsp;Exemple pour mettre le site en anglais : <em>langue en</em>\n",
@@ -33,6 +35,7 @@
         },
         "vider": {
             "executable": true,
+            "directEnd": true,
             "displayInHelp": true,
             "hasArgs": false,
             "description": "Vide le terminal.\n",
@@ -40,6 +43,7 @@
         },
         "portfolio": {
             "executable": true,
+            "directEnd": false,
             "displayInHelp": true,
             "hasArgs": false,
             "description": "Montre mon portfolio.\n",
@@ -63,6 +67,30 @@
             "hasArgs": false,
             "description": "Donne le lien de ma page GitHub.\n",
             "content": "<a href=\"https://github.com/scoffgard\" target=\"_blank\">https://github.com/scoffgard</a>\n"
+        },
+        "contact": {
+            "executable": true,
+            "directEnd": false,
+            "displayInHelp": true,
+            "hasArgs": false,
+            "description": "Vous permet de me contacter.\n",
+            "execCode": "contact",
+            "success": "Formulaire de contact affiché avec succès.\n",
+            "windowInfos": {
+                "name": "Contact - Téo MEILLEURAT",
+                "content": {
+                    "name": "Nom :",
+                    "email": "Adresse e-mail :",
+                    "subject": "Objet du message :",
+                    "message": "Votre message :",
+                    "submit": "Envoyer",
+                    "sent": "Message envoyé avec succès.\n",
+                    "nonValidContent": {
+                        "missing": "Tout les champs doivent êtres remplis.",
+                        "email": "L'email que vous avez fourni est invalide."
+                    }
+                }
+            }
         }
     }
 }
