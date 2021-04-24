@@ -2,12 +2,12 @@ const nodemailer = require("nodemailer");
 const express = require("express");
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const fs = require('fs');
+const https = require('https');
 
 const config = require('./emails-infos.json');
 
 const app = express();
-
-const port = 8080;
 
 const transporter = nodemailer.createTransport({
     host: config.provider.server,
@@ -22,8 +22,21 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-app.use(cors())
+const corsOptions = {
+    origin: 'https://teomeilleurat.me',
+    optionsSuccessStatus: 200
+}
+
+const port = 8090;
+
+const privateKey  = fs.readFileSync('/etc/letsencrypt/live/teomeilleurat.me/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/teomeilleurat.me/cert.pem', 'utf8');
+
+const credentials = {key: privateKey, cert: certificate};
+const httpsServer = https.createServer(credentials, app);
+
 app.use(bodyParser.json());
+app.use(cors(corsOptions));
 
 app.post('/send', (req, res) => {
     let message = generateMessage(req.body);
@@ -31,7 +44,7 @@ app.post('/send', (req, res) => {
     res.sendStatus(200);
 });
 
-app.listen(port, () => {
+httpsServer.listen(port, () => {
     console.log(`Server up and running on port ${port}.`);
 });
 

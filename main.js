@@ -11,7 +11,7 @@ const customWindowContent = document.getElementById('customWindowContent');
 
 const languageList = ['en', 'fr'];
 
-const lineSpawnTime = 10;
+const lineSpawnTime = 200;
 
 let langData = {};
 
@@ -303,7 +303,7 @@ async function trySumbitContactForm(content) {
         }
     }
 
-    fetch('http://localhost:8080/send', {
+    fetch('https://teomeilleurat.me:8090/send', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
