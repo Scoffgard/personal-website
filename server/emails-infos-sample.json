@@ -1,0 +1,10 @@
+{
+    "provider": {
+        "server": "webmail.service.com",
+        "email": "sender@service.com",
+        "password": "s4r0ng@nd3ff1c13ntP@ssw0rd"
+    },
+    "receiver" : {
+        "email": "receiver@service.com"
+    }
+}
